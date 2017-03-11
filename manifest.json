@@ -1,0 +1,30 @@
+{
+	//扩展信息
+	"name": "DragSearch",
+	"version": "1.0",
+	"manifest_version": 2,
+	"description": "You Can Drag The Words You Choose Then Put Off To Search",
+
+	//点击扩展，弹出窗体
+	"browser_action": {"default_popup": "popup.html"},
+
+	//扩展图标
+	"icons": {"128": "icon.png"},
+
+	//后台执行的脚本
+	"background" : {  
+	    "persistent": true,  
+	    "scripts": ["background.js"]  
+	},
+
+	//匹配指定类型tabs执行的脚本
+	"content_scripts": [{  
+         "matches": ["http://*/*","https://*/*"],  
+         "js": [ "content.js"],   
+         "run_at": "document_start",  
+         "all_frames": true   
+    }],
+
+    //扩展需要用到的权限
+	"permissions": ["<all_urls>", "activeTab"]
+}
